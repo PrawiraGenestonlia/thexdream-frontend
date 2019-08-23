@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { setGlobal } from 'reactn';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './css/tailwind.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+setGlobal({
+  gUserAuth: false,
+  gUserID: "",
+  gIsSidebarCollapse: false,
+  gTestState: 1
+});
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
