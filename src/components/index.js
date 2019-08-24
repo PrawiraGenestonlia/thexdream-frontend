@@ -1,2 +1,3 @@
 import NavBar from './navbar.components';
-export { NavBar };
+import PwaInstallerPrompt from './pwainstallerprompt.components';
+export { NavBar, PwaInstallerPrompt };

@@ -1,5 +1,6 @@
 import React, { useGlobal, useEffect, useState } from 'reactn';
 import Conditional from 'react-simple-conditional';
+import { PwaInstallerPrompt } from '../components';
 
 export default () => {
   const [gTestState, setgTestState] = useGlobal('gTestState');
@@ -7,7 +8,9 @@ export default () => {
   const [installPrompt, setInstallPrompt] = useState(null);
 
   useEffect(() => {
-    // console.log("Listening for Install prompt");
+    console.log("Listening for Install prompt");
+    console.log("start up");
+
     window.addEventListener('beforeinstallprompt', e => {
       // For older browsers
       e.preventDefault();
@@ -19,6 +22,12 @@ export default () => {
       }
       // Set the state variable to make button visible
       setInstallButton(true);
+    })
+
+    window.addEventListener('appinstalled', e => {
+      // For older browsers
+      e.preventDefault();
+      console.log("App is successfully installed before");
     })
   }, []);
 
@@ -48,8 +57,8 @@ export default () => {
       <Conditional condition={installButton}
         //  style={styles.installBtn}
         onClick={installApp}>
-        Install As Application
-          </Conditional>
+        <PwaInstallerPrompt />
+      </Conditional>
     </div>
   );
 }

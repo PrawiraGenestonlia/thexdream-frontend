@@ -1,5 +1,5 @@
 {
-  "name": "xDream",
+  "name": "xDream Application",
   "short_name": "xDream",
   "icons": [
     {
@@ -14,7 +14,7 @@
     }
   ],
   "start_url": ".",
-  "theme_color": "#ffffff",
+  "theme_color": "#282c34",
   "background_color": "#ffffff",
   "display": "standalone"
 }
