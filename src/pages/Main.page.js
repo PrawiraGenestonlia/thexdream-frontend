@@ -1,12 +1,13 @@
 import React, { useGlobal, useEffect, useState } from 'reactn';
 import Conditional from 'react-simple-conditional';
 
-function App() {
+export default () => {
   const [gTestState, setgTestState] = useGlobal('gTestState');
   const [installButton, setInstallButton] = useState(false);
   const [installPrompt, setInstallPrompt] = useState(null);
+
   useEffect(() => {
-    console.log("Listening for Install prompt");
+    // console.log("Listening for Install prompt");
     window.addEventListener('beforeinstallprompt', e => {
       // For older browsers
       e.preventDefault();
@@ -36,6 +37,7 @@ function App() {
     // Hide the button
     setInstallButton(false);
   }
+
   return (
     <div className="App">
       <h1>Home</h1>
@@ -51,5 +53,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
