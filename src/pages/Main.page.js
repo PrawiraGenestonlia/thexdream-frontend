@@ -42,6 +42,7 @@ export default () => {
     }
     else {
       console.log("App not installed");
+      alert('Hope you will install me soon!');
     }
     // Remove the event reference
     setInstallPrompt(null);
