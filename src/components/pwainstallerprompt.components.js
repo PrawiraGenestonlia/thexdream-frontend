@@ -30,7 +30,6 @@ export default (props) => {
   const AndroidAndUnknown = () => {
     return (
       <Fragment>
-
         {
           showModal ?
             <div class="animated fadeIn fixed z-50 pin overflow-auto bg-smoke-500 flex">
