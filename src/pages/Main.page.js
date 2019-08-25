@@ -2,14 +2,16 @@ import React, { useGlobal, useEffect, useState } from 'reactn';
 import Conditional from 'react-simple-conditional';
 import { PwaInstallerPrompt } from '../components';
 
+
 export default () => {
   const [gTestState, setgTestState] = useGlobal('gTestState');
   const [installButton, setInstallButton] = useState(false);
   const [installPrompt, setInstallPrompt] = useState(null);
+  const currentDevice = getMobileOperatingSystem();
 
   useEffect(() => {
-    console.log("Listening for Install prompt");
-    console.log("start up");
+
+    console.log("Listening for Install prompt on", currentDevice);
 
     window.addEventListener('beforeinstallprompt', e => {
       // For older browsers
@@ -47,18 +49,45 @@ export default () => {
     setInstallButton(false);
   }
 
+  function getMobileOperatingSystem() {
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    try {
+      // Windows Phone must come first because its UA also contains "Android"
+      if (/windows phone/i.test(userAgent)) {
+        return "Windows Phone";
+      }
+      if (/android/i.test(userAgent)) {
+        return "Android";
+      }
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return "iOS";
+      }
+    } catch (err) {
+      return "Error";
+    }
+    return "Unknown";
+  }
+
   return (
-    <div className="App">
+    <>
       <h1>Home</h1>
       <div>
         <div>test case: {gTestState}</div>
         <button onClick={() => { setgTestState(gTestState + 1) }}>change</button>
       </div>
-      <Conditional condition={installButton}
-        //  style={styles.installBtn}
-        onClick={installApp}>
-        <PwaInstallerPrompt />
-      </Conditional>
-    </div>
+      <p>you are browsing using {currentDevice}</p>
+      {
+        currentDevice === "Windows Phone" || currentDevice === "Android" || currentDevice === "Unknown" ?
+          <Conditional condition={installButton}
+            onClick={installApp}>
+            <PwaInstallerPrompt platform="Android" />
+          </Conditional> : null
+      }
+      {
+        currentDevice === "iOS" && !window.navigator.standalone ?
+          <PwaInstallerPrompt platform="iOS" />
+          : null
+      }
+    </>
   );
 }
