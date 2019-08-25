@@ -79,9 +79,8 @@ export default () => {
       <p>you are browsing using {currentDevice}</p>
       {
         currentDevice === "Windows Phone" || currentDevice === "Android" || currentDevice === "Unknown" ?
-          <Conditional condition={installButton}
-            onClick={installApp}>
-            <PwaInstallerPrompt platform="Android" />
+          <Conditional condition={installButton} >
+            <PwaInstallerPrompt platform="Android" installAppOnClick={installApp} />
           </Conditional> : null
       }
       {

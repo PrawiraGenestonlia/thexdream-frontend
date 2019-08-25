@@ -12,7 +12,8 @@ setGlobal({
   gUserAuth: false,
   gUserID: "",
   gIsSidebarCollapse: false,
-  gTestState: 1
+  gTestState: 1,
+  gShowPromptModal: true,
 });
 
 function configureHistory() {
