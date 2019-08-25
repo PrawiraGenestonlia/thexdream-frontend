@@ -1,4 +1,4 @@
-import React, { useGlobal, useEffect, useState } from 'reactn';
+import React, { useGlobal, useEffect, useState, } from 'reactn';
 import Conditional from 'react-simple-conditional';
 import { PwaInstallerPrompt } from '../components';
 
@@ -7,11 +7,13 @@ export default () => {
   const [gTestState, setgTestState] = useGlobal('gTestState');
   const [installButton, setInstallButton] = useState(false);
   const [installPrompt, setInstallPrompt] = useState(null);
+  const [showModal, setShowModal] = useGlobal('gShowPromptModal');
+  
   const currentDevice = getMobileOperatingSystem();
 
   useEffect(() => {
 
-    console.log("Listening for Install prompt on", currentDevice);
+    console.log("Listening for Install prompt on");
 
     window.addEventListener('beforeinstallprompt', e => {
       // For older browsers
@@ -71,12 +73,6 @@ export default () => {
 
   return (
     <>
-      <h1>Home</h1>
-      <div>
-        <div>test case: {gTestState}</div>
-        <button onClick={() => { setgTestState(gTestState + 1) }}>change</button>
-      </div>
-      <p>you are browsing using {currentDevice}</p>
       {
         currentDevice === "Windows Phone" || currentDevice === "Android" || currentDevice === "Unknown" ?
           <Conditional condition={installButton} >
@@ -88,6 +84,13 @@ export default () => {
           <PwaInstallerPrompt platform="iOS" />
           : null
       }
+      <h1>Home</h1>
+      <div>
+        <div>test case: {gTestState}</div>
+        <button onClick={() => { setgTestState(gTestState + 1) }}>change</button>
+      </div>
+      <p>you are browsing using {currentDevice}</p>
+
     </>
   );
 }
