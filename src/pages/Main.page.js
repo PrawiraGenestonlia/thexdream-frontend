@@ -1,14 +1,13 @@
 import React, { useGlobal, useEffect, useState, } from 'reactn';
 import Conditional from 'react-simple-conditional';
-import { PwaInstallerPrompt } from '../components';
+import { PwaInstallerPrompt, } from '../components';
 
 
 export default () => {
   const [gTestState, setgTestState] = useGlobal('gTestState');
   const [installButton, setInstallButton] = useState(false);
   const [installPrompt, setInstallPrompt] = useState(null);
-  const [showModal, setShowModal] = useGlobal('gShowPromptModal');
-  
+
   const currentDevice = getMobileOperatingSystem();
 
   useEffect(() => {
@@ -84,13 +83,14 @@ export default () => {
           <PwaInstallerPrompt platform="iOS" />
           : null
       }
-      <h1>Home</h1>
-      <div>
-        <div>test case: {gTestState}</div>
-        <button onClick={() => { setgTestState(gTestState + 1) }}>change</button>
+      <div className="relative">
+        <h1>Home</h1>
+        <div>
+          <div>test case: {gTestState}</div>
+          <button onClick={() => { setgTestState(gTestState + 1) }}>change</button>
+        </div>
+        <p>you are browsing using {currentDevice}</p>
       </div>
-      <p>you are browsing using {currentDevice}</p>
-
     </>
   );
 }

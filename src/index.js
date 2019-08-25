@@ -5,7 +5,7 @@ import './index.css';
 import './css/tailwind.css';
 import Routes from './routes'
 import * as serviceWorker from './serviceWorker';
-import { NavBar } from './components'
+import { NavBar, InternetStatusBar } from './components'
 import { createBrowserHistory, createHashHistory } from 'history';
 
 setGlobal({
@@ -25,9 +25,10 @@ function configureHistory() {
 const history = configureHistory()
 
 ReactDOM.render(
-  <Router history={history}>
-    <NavBar />
-    <Routes />
+  <Router history={history} className="overflow-hidden">
+    <InternetStatusBar className="overflow-hidden" />
+    <NavBar className="top-0 overflow-hidden" />
+    <Routes className="h-screen w-screen " />
   </Router>
   , document.getElementById('root'));
 
