@@ -31,7 +31,17 @@ export default () => {
       // For older browsers
       e.preventDefault();
       console.log("App is successfully installed before");
-    })
+    });
+
+    // Prevents window from moving on touch on older browsers.
+    window.addEventListener('touchmove', function (event) {
+      event.preventDefault()
+    }, false)
+
+    // Allows content to move on touch.
+    // document.querySelector('.body-container').addEventListener('touchmove', function (event) {
+    //   event.stopPropagation()
+    // }, false)
   }, []);
 
   async function installApp() {
