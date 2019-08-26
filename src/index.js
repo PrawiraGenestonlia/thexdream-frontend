@@ -26,9 +26,12 @@ const history = configureHistory()
 
 ReactDOM.render(
   <Router history={history} className="overflow-hidden">
-    <InternetStatusBar className="overflow-hidden" />
-    <NavBar className="top-0 overflow-hidden" />
-    <Routes />
+    <div className="overflow-hidden">
+      <InternetStatusBar className="overflow-hidden" />
+      <NavBar className="fixed top-0 overflow-hidden" />
+      <Routes />
+    </div>
+
   </Router>
   , document.getElementById('root'));
 
