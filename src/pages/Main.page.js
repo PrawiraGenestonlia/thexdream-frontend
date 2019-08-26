@@ -85,6 +85,7 @@ export default () => {
       }
       <div className="relative p-2">
         <h1>Home</h1>
+        <p>current</p>
         <div>
           <div>test case: {gTestState}</div>
           <button onClick={() => { setgTestState(gTestState + 1) }}>change</button>
