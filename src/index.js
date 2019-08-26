@@ -28,7 +28,7 @@ ReactDOM.render(
   <Router history={history} className="overflow-hidden">
     <InternetStatusBar className="overflow-hidden" />
     <NavBar className="top-0 overflow-hidden" />
-    <Routes className="h-screen w-screen " />
+    <Routes className="h-screen w-screen" />
   </Router>
   , document.getElementById('root'));
 

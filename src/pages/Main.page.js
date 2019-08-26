@@ -83,7 +83,7 @@ export default () => {
           <PwaInstallerPrompt platform="iOS" />
           : null
       }
-      <div className="relative">
+      <div className="relative p-2">
         <h1>Home</h1>
         <div>
           <div>test case: {gTestState}</div>
