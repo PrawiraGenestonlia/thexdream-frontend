@@ -20,12 +20,12 @@ export default () => {
       setTimeout(() => { setLastOfflineTime(null) }, 3000);
       return (
         <Fragment>
-          <div className="fixed w-screen h-screen z-80">
-            <div class="flex absolute bg-green-100 border border-green-500 text-green-800 px-4 py-1 rounded text-xs inset-x-0 bottom-0 justify-center" role="alert">
-              <strong class="font-bold">Online!  </strong>
-              <span class="block inline ml-2">Welcome back!</span>
-            </div>
+          {/* <div className="fixed w-screen h-screen z-80"> */}
+          <div class="flex absolute bg-green-100 border border-green-500 text-green-800 px-4 py-1 rounded text-xs inset-x-0 bottom-0 justify-center" role="alert">
+            <strong class="font-bold">Online!  </strong>
+            <span class="block inline ml-2">Welcome back!</span>
           </div>
+          {/* </div> */}
         </Fragment>
       )
     }
@@ -33,12 +33,12 @@ export default () => {
     if (!internetStatus) {
       return (
         <Fragment>
-          <div className="fixed w-screen h-screen z-80">
-            <div class="flex absolute bg-red-100 border border-red-400 text-red-700 px-4 py-1 rounded text-xs inset-x-0 bottom-0 justify-center" role="alert">
-              <strong class="font-bold">Offline!  </strong>
-              <span class="block inline ml-2">Some features may not be functional</span>
-            </div>
+          {/* <div className="fixed w-screen h-screen z-80"> */}
+          <div class="flex absolute bg-red-100 border border-red-400 text-red-700 px-4 py-1 rounded text-xs inset-x-0 bottom-0 justify-center" role="alert">
+            <strong class="font-bold">Offline!  </strong>
+            <span class="block inline ml-2">Some features may not be functional</span>
           </div>
+          {/* </div> */}
         </Fragment>
       )
     }

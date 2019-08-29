@@ -1,6 +1,7 @@
 import React, { setGlobal } from 'reactn';
 import { Router } from 'react-router-dom';
 import ReactDOM from 'react-dom';
+import { Layout } from 'antd';
 import './index.css';
 import './css/tailwind.css';
 import Routes from './routes'
@@ -26,15 +27,13 @@ const history = configureHistory()
 
 ReactDOM.render(
   <Router history={history} className="overflow-hidden">
-    <div className="overflow-hidden">
-      <InternetStatusBar className="overflow-hidden" />
-      <header style={{ position: 'fixed', zIndex: '10' }}>
-        <NavBar className="fixed top-0 overflow-hidden" />
-      </header>
-
+    <InternetStatusBar className="overflow-hidden" />
+    <header className="fixed z-10 top-0">
+      <NavBar className="fixed z-10 top-0 overflow-hidden" />
+    </header>
+    <div className="scrolling-touch overflow-visible mt-12">
       <Routes />
     </div>
-
   </Router>
   , document.getElementById('root'));
 

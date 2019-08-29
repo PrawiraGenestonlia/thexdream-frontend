@@ -9,6 +9,7 @@
   "homepage": "https://app.thexdream.net",
   "dependencies": {
     "@types/react": "^16.9.2",
+    "antd": "^3.22.2",
     "autoprefixer": "^9.6.1",
     "axios": "^0.19.0",
     "core-js": "^3.2.1",
