@@ -1,6 +1,7 @@
 import React, { useState } from 'reactn';
 import { NavLink } from 'react-router-dom';
 import './navbar.components.css';
+import config from '../config';
 
 const NavLinkStyle = {
   fontWeight: "bold",
@@ -12,20 +13,20 @@ export default () => {
   return (
     <>
       <div id="myNav" className="overlay" style={{ height: height }}>
-        <span className="closebtn text-white cursor-pointer" onClick={() => { setHeight("0%") }}>&times;</span>
+        <span className="fixed top-0 text-center cursor-pointer ml-2 text-4xl self-center text-white lg:text-white xl:text-white" onClick={() => { setHeight("0%") }}>&times;</span>
         <div className="overlay-content">
           <nav>
-            <NavLink to="/" activeStyle={NavLinkStyle} exact>
-              <span onClick={() => { setHeight("0%") }}>Page 1</span>
+            <NavLink to={config.routes.homepage} activeStyle={NavLinkStyle} exact>
+              <span onClick={() => { setHeight("0%") }}>Home</span>
             </NavLink>
-            <NavLink to="/test" activeStyle={NavLinkStyle} exact>
-              <span onClick={() => { setHeight("0%") }}>Page 2</span>
+            <NavLink to={config.routes.topnews} activeStyle={NavLinkStyle} exact>
+              <span onClick={() => { setHeight("0%") }}>Top News</span>
             </NavLink>
-            <NavLink to="/" activeStyle={NavLinkStyle} exact>
-              <span onClick={() => { setHeight("0%") }}>Page 3</span>
+            <NavLink to={config.routes.about} activeStyle={NavLinkStyle} exact>
+              <span onClick={() => { setHeight("0%") }}>About</span>
             </NavLink>
-            <NavLink to="/test" activeStyle={NavLinkStyle} exact>
-              <span onClick={() => { setHeight("0%") }}>Page 4</span>
+            <NavLink to={config.routes.setting} activeStyle={NavLinkStyle} exact>
+              <span onClick={() => { setHeight("0%") }}>Setting</span>
             </NavLink>
           </nav>
         </div>

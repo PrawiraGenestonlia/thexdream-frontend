@@ -8,6 +8,7 @@ import Routes from './routes'
 import * as serviceWorker from './serviceWorker';
 import { NavBar, InternetStatusBar } from './components'
 import { createBrowserHistory, createHashHistory } from 'history';
+import { Main } from './pages';
 
 setGlobal({
   gUserAuth: false,
@@ -31,7 +32,8 @@ ReactDOM.render(
     <header className="fixed z-10 top-0">
       <NavBar className="fixed z-10 top-0 overflow-hidden" />
     </header>
-    <div className="scrolling-touch overflow-visible mt-12">
+    <div className="scrolling-touch overflow-visible mt-16 ml-3 mr-3">
+      <Main />
       <Routes />
     </div>
   </Router>

@@ -93,7 +93,7 @@ export default () => {
           <PwaInstallerPrompt platform="iOS" />
           : null
       }
-      <div className="relative p-2">
+      {/* <div className="relative p-2">
         <h1>Home</h1>
         <p>current</p>
         <div>
@@ -101,7 +101,7 @@ export default () => {
           <button onClick={() => { setgTestState(gTestState + 1) }}>change</button>
         </div>
         <p>you are browsing using {currentDevice}</p>
-      </div>
+      </div> */}
     </>
   );
 }
