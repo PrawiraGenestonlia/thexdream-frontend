@@ -28,7 +28,10 @@ ReactDOM.render(
   <Router history={history} className="overflow-hidden">
     <div className="overflow-hidden">
       <InternetStatusBar className="overflow-hidden" />
-      <NavBar className="fixed top-0 overflow-hidden" />
+      <header style={{ position: 'fixed', zIndex: '10' }}>
+        <NavBar className="fixed top-0 overflow-hidden" />
+      </header>
+
       <Routes />
     </div>
 
