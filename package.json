@@ -34,7 +34,7 @@
     "serve": "serve -s build",
     "start-https": "HTTPS=true npm run start",
     "git-sc": "git add . && git commit -am \".\" && git push origin development",
-    "git-master-sync": "git push origin master"
+    "git-master-sync": "git checkout master && git merge development && git push origin master && git checkout development"
   },
   "eslintConfig": {
     "extends": "react-app"
