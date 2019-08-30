@@ -30,7 +30,9 @@
     "eject": "react-scripts eject",
     "preserve": "npm run build",
     "serve": "serve -s build",
-    "start-https": "HTTPS=true npm run start"
+    "start-https": "HTTPS=true npm run start",
+    "git-sc": "git add . && git commit -am \".\" && git push origin development",
+    "git-master-sync": "git push origin master"
   },
   "eslintConfig": {
     "extends": "react-app"

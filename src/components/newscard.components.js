@@ -1,0 +1,56 @@
+import React, { Fragment, useEffect, useState } from 'reactn';
+
+const sampleData = {
+  source: { id: 'google-news', name: 'Google News' },
+  author: 'Chiara Giordano',
+  title: 'Ebola death toll in Congo now over 2,000 - The Independent',
+  description:
+    'Health workers struggle to control spread of disease in remote and conflict-hit areas',
+  url:
+    'https://news.google.com/__i/rss/rd/articles/CBMie2h0dHBzOi8vd3d3LmluZGVwZW5kZW50LmNvLnVrL25ld3Mvd29ybGQvYWZyaWNhL2Vib2xhLXZpcnVzLW91dGJyZWFrLWNvbmdvLWRlbW9jcmF0aWMtcmVwdWJsaWMtZHJjLWRlYXRoLXRvbGwtYTkwODU1NjYuaHRtbNIBf2h0dHBzOi8vd3d3LmluZGVwZW5kZW50LmNvLnVrL25ld3Mvd29ybGQvYWZyaWNhL2Vib2xhLXZpcnVzLW91dGJyZWFrLWNvbmdvLWRlbW9jcmF0aWMtcmVwdWJsaWMtZHJjLWRlYXRoLXRvbGwtYTkwODU1NjYuaHRtbD9hbXA?oc=5',
+  urlToImage:
+    'https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/08/30/15/ebola-congo.jpg',
+  publishedAt: '2019-08-30T14:42:34Z',
+  content:
+    'The death toll from the Congos year-long Ebola outbreak has now climbed above 2,000.\r\nGovernment data released on Friday showed the number of deaths had reached 2,006, while confirmed and probable cases of the virus had surpassed 3,000.\r\nThe death of a nine-y… [+6707 chars]'
+}
+
+export default (props) => {
+  const [currentNews, setCurrentNews] = useState('');
+  useEffect(() => {
+    setCurrentNews(props.data);
+    console.log(currentNews);
+  }, [props]);
+  return (
+    <Fragment>  
+    {currentNews?
+      <div class="max-w-sm w-full lg:max-w-full lg:flex">
+        <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+          style={{ backgroundImage: `url('${currentNews.urlToImage}')` }}
+          title={currentNews.title}>
+        </div>
+        <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+          <div class="mb-8">
+            <p class="text-sm text-gray-600 flex items-center">
+              <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
+              </svg>
+              Members only
+            </p>
+            <div class="text-gray-900 font-bold text-xl mb-2">{currentNews.title}</div>
+            <p class="text-gray-700 text-base">{currentNews.description}</p>
+          </div>
+          <div class="flex items-center">
+            {/* <img class="w-10 h-10 rounded-full mr-4" src="/img/jonathan.jpg" alt="Avatar of Jonathan Reinink" /> */}
+            <div class="text-sm">
+              <p class="text-gray-900 leading-none">{currentNews.author}</p>
+              <p class="text-gray-600">{currentNews.publishedAt}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      :null}
+    </Fragment>
+  )
+}
+

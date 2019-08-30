@@ -1,9 +1,10 @@
 require('dotenv')
 
 const config = {
-  backendUri: 'http://localhost:3800',
+  server_url: 'http://server.thexdream.net:3800',
   api: {
-    userSignUp: '/api'
+    userSignUp: '/api',
+    getTopNews: '/api/news'
   },
   routes: {
     homepage: '/',
