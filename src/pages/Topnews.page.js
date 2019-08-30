@@ -33,7 +33,7 @@ export default () => {
   }, 100);
 
   useEffect(() => {
-    axios.get(config.server_url + config.api.getTopNews)
+    axios.get('http://server.thexdream.net:3800/api/news')
       .then(res => {
         // console.log(res);
         res.status === 200 && setCurrentNews(res.data);

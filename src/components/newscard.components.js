@@ -26,7 +26,7 @@ export default (props) => {
     temp.shorttitle = arr[0];
     temp.publisher = arr[1];
     setCurrentNews(temp);
-    console.log(temp);
+    // console.log(temp);
   }, [props]);
   return (
     <Fragment>
