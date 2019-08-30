@@ -53,10 +53,6 @@ export default () => {
           else return null;
         })
       }
-      <p>
-        {window.scrollTop};{window.clientHeight}
-        ;{window.scrollHeight}
-      </p>
       {isLoading &&
         <div>Loading...</div>
       }
@@ -65,7 +61,7 @@ export default () => {
         setTimeout(() => { setIsLoading(false) }, 500)
       } */}
       {!hasMore &&
-        <div>You did it! You reached the end!</div>
+        <div>There is no more top news at the moment!</div>
       }
     </Fragment>
   )
