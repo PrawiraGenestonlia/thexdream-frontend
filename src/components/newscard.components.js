@@ -36,9 +36,12 @@ export default (props) => {
             style={{ backgroundImage: `url('${currentNews.urlToImage}')` }}
             title={currentNews.shorttitle}> </div>
             :
-            <div class="border-t border-r border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"/>
+            <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+            style={{ backgroundImage: `url('https://lousbarandgrill.com/wp-content/uploads/2018/08/news-1.jpg')` }}
+            title={currentNews.shorttitle}> </div>
             }
-          <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+            {/* <div class="border-t border-r border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"/> */}
+          <div class="xl:w-screen lg:w-screen border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
             <div class="mb-8">
               <p class="text-sm text-gray-600 flex items-center">
                 <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
