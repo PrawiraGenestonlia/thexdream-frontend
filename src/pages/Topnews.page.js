@@ -11,15 +11,6 @@ export default () => {
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  // window.addEventListener("scroll", debounce(() => {
-  //   if (
-  //     (window.innerHeight + document.documentElement.scrollTop)
-  //     >= document.documentElement.offsetHeight
-  //   ) {
-  //     setLoadedArticles(loadedArticles + 2);
-  //   }
-  // }, 100));
-
   window.onscroll = debounce(() => {
     if (isLoading || !hasMore) return;
     if (
@@ -33,7 +24,7 @@ export default () => {
   }, 100);
 
   useEffect(() => {
-    axios.get(config.server_url+config.api.getTopNews)
+    axios.get(config.server_url + config.api.getTopNews)
       .then(res => {
         // console.log(res);
         res.status === 200 && setCurrentNews(res.data);
