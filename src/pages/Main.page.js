@@ -15,15 +15,17 @@ export default () => {
         console.log("git version has changed");
         localStorage.setItem('gitversion', process.env.REACT_APP_GIT_SHA);
         //refresh
+        window.location.reload(true);
       }
+      else console.log("no new version is found");
     }
     else {
+      console.log("First visit to the web");
       localStorage.setItem('gitversion', process.env.REACT_APP_GIT_SHA);
     }
   }
   useEffect(() => {
-
-
+    checkGitVersion();
     console.log("Listening for Install prompt on");
 
     window.addEventListener('beforeinstallprompt', e => {
