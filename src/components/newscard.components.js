@@ -25,6 +25,7 @@ export default (props) => {
     // temp.urlToImage = temp.urlToImage ? temp.urlToImage : "https://dummyimage.com/1x1/fff/fff.png";
     temp.shorttitle = arr[0];
     temp.publisher = arr[1];
+    temp.publishtime = new Date(props.data.publishedAt);
     setCurrentNews(temp);
     // console.log(temp);
   }, [props]);
@@ -32,15 +33,15 @@ export default (props) => {
     <Fragment>
       {currentNews ?
         <div class="max-w-sm w-full lg:max-w-full lg:flex mb-4">
-          {currentNews.urlToImage? <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+          {currentNews.urlToImage ? <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
             style={{ backgroundImage: `url('${currentNews.urlToImage}')` }}
             title={currentNews.shorttitle}> </div>
             :
             <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-            style={{ backgroundImage: `url('https://lousbarandgrill.com/wp-content/uploads/2018/08/news-1.jpg')` }}
-            title={currentNews.shorttitle}> </div>
-            }
-            {/* <div class="border-t border-r border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"/> */}
+              style={{ backgroundImage: `url('https://lousbarandgrill.com/wp-content/uploads/2018/08/news-1.jpg')` }}
+              title={currentNews.shorttitle}> </div>
+          }
+          {/* <div class="border-t border-r border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"/> */}
           <div class="xl:w-screen lg:w-screen border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
             <div class="mb-8">
               <p class="text-sm text-gray-600 flex items-center">
@@ -56,7 +57,7 @@ export default (props) => {
               {/* <img class="w-10 h-10 rounded-full mr-4" src="/img/jonathan.jpg" alt="Avatar of Jonathan Reinink" /> */}
               <div class="text-sm">
                 <p class="text-gray-900 leading-none">{currentNews.publisher}</p>
-                <p class="text-gray-600">{currentNews.publishedAt}</p>
+                <p class="text-gray-600">{currentNews.publishtime.toLocaleString()} </p>
               </div>
             </div>
           </div>

@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { Layout } from 'antd';
 import './index.css';
 import './css/tailwind.css';
+import './css/hamburgers.css';
 import Routes from './routes'
 import * as serviceWorker from './serviceWorker';
 import { NavBar, InternetStatusBar } from './components'
@@ -30,7 +31,7 @@ ReactDOM.render(
   <Router history={history} className="overflow-hidden">
     <InternetStatusBar className="overflow-hidden" />
     <header className="fixed z-10 top-0">
-      <NavBar className="fixed z-10 top-0 overflow-hidden" />
+      <NavBar history={history} className="fixed z-10 top-0 overflow-hidden" />
     </header>
     <div className="scrolling-touch overflow-visible mt-16 ml-3 mr-3">
       <Main />

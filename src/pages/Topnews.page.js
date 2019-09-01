@@ -11,24 +11,24 @@ export default () => {
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  window.onscroll = debounce(() => {
-    if (isLoading || !hasMore) return;
-    if (
-      (window.innerHeight + document.documentElement.scrollTop)
-      === document.documentElement.offsetHeight
-    ) {
-      setLoadedArticles(loadedArticles + 2);
-      // setIsLoading(true);
-      if (loadedArticles === currentnews.totalResults) setHasMore(false);
-    }
-  }, 100);
+  // window.onscroll = debounce(() => {
+  //   if (isLoading || !hasMore) return;
+  //   if (
+  //     (window.innerHeight + document.documentElement.scrollTop)
+  //     === document.documentElement.offsetHeight
+  //   ) {
+  //     setLoadedArticles(loadedArticles + 1);
+  //     // setIsLoading(true);
+  //     if (loadedArticles >= currentnews.totalResults) setHasMore(false);
+  //   }
+  // }, 100);
 
   useEffect(() => {
     axios.get(config.server_url + config.api.getTopNews)
       .then(res => {
         // console.log(res);
         res.status === 200 && setCurrentNews(res.data);
-        res.status === 200 && setLoadedArticles(5);
+        res.status === 200 && setLoadedArticles(res.data.totalResults);
       })
       .catch(err => {
         alert(err);
@@ -52,7 +52,7 @@ export default () => {
         setTimeout(() => { setIsLoading(false) }, 500)
       } */}
       {!hasMore &&
-        <div>There is no more top news at the moment!</div>
+        <div className="flex align-center">There is no more top news at the moment!</div>
       }
     </Fragment>
   )
