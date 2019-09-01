@@ -3,6 +3,7 @@ import React, { Fragment } from 'reactn';
 export default () => {
   const refresh = () => {
     window.location.reload(true)
+
   };
   return (
     <Fragment>

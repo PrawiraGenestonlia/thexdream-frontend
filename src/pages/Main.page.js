@@ -9,8 +9,20 @@ export default () => {
   const [installPrompt, setInstallPrompt] = useState(null);
 
   const currentDevice = getMobileOperatingSystem();
-
+  const checkGitVersion = () => {
+    if (localStorage.getItem('gitversion')) {
+      if (localStorage.getItem('gitversion') !== process.env.REACT_APP_GIT_SHA) {
+        console.log("git version has changed");
+        localStorage.setItem('gitversion', process.env.REACT_APP_GIT_SHA);
+        //refresh
+      }
+    }
+    else {
+      localStorage.setItem('gitversion', process.env.REACT_APP_GIT_SHA);
+    }
+  }
   useEffect(() => {
+
 
     console.log("Listening for Install prompt on");
 
