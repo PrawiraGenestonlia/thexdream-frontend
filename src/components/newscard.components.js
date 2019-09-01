@@ -15,9 +15,19 @@ const sampleData = {
     'The death toll from the Congos year-long Ebola outbreak has now climbed above 2,000.\r\nGovernment data released on Friday showed the number of deaths had reached 2,006, while confirmed and probable cases of the virus had surpassed 3,000.\r\nThe death of a nine-y… [+6707 chars]'
 }
 
+
+
 export default (props) => {
   const [currentNews, setCurrentNews] = useState('');
   // const [currentTitle, setCurrentTitle] = useState([]);
+  const handleClickNews = () => {
+    // alert('You have clicked me');
+    return (
+      <div className="bg-blue-500 h-screen w-screen">
+
+      </div>
+    )
+  }
   useEffect(() => {
     var arr = props.data.title.split(" - ");
     var temp = props.data;
@@ -28,11 +38,13 @@ export default (props) => {
     temp.publishtime = new Date(props.data.publishedAt);
     setCurrentNews(temp);
     // console.log(temp);
+
+    //
   }, [props]);
   return (
     <Fragment>
       {currentNews ?
-        <div class="max-w-sm w-full lg:max-w-full lg:flex mb-4">
+        <div class="max-w-sm w-full lg:max-w-full lg:flex mb-4" onClick={() => { handleClickNews() }}>
           {currentNews.urlToImage ? <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
             style={{ backgroundImage: `url('${currentNews.urlToImage}')` }}
             title={currentNews.shorttitle}> </div>
@@ -48,15 +60,18 @@ export default (props) => {
                 <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                   <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
                 </svg>
-                Exclusive for you
+                You will be directed to the original site
             </p>
               <div class="text-gray-900 font-bold text-xl mb-2">{currentNews.shorttitle}</div>
               <p class="text-gray-700 text-base">{currentNews.description}</p>
             </div>
             <div class="flex items-center">
-              {/* <img class="w-10 h-10 rounded-full mr-4" src="/img/jonathan.jpg" alt="Avatar of Jonathan Reinink" /> */}
               <div class="text-sm">
-                <p class="text-gray-900 leading-none">{currentNews.publisher}</p>
+                <p class="text-gray-900 leading-none">
+                  <a href={currentNews.url}>
+                    {currentNews.publisher}
+                  </a>
+                </p>
                 <p class="text-gray-600">{currentNews.publishtime.toLocaleString()} </p>
               </div>
             </div>
