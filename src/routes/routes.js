@@ -10,7 +10,8 @@ import {
   TopNews,
   About,
   Setting,
-  NotFound
+  NotFound,
+  SingleNews
 } from '../pages';
 //
 export default () => {
@@ -20,6 +21,7 @@ export default () => {
       <Route exact path={config.routes.topnews} component={TopNews} />
       <Route exact path={config.routes.about} component={About} />
       <Route exact path={config.routes.setting} component={Setting} />
+      <Route exact path={config.routes.singlenews} component={SingleNews} />
       <Route component={NotFound} />
     </Switch>
   )

@@ -1,4 +1,7 @@
-import React, { Fragment, useEffect, useState } from 'reactn';
+import React, { Fragment, useEffect, useState, useGlobal } from 'reactn';
+import { Link, Redirect } from 'react-router-dom';
+import axios from 'axios';
+import config from '../config';
 
 const sampleData = {
   source: { id: 'google-news', name: 'Google News' },
@@ -19,14 +22,14 @@ const sampleData = {
 
 export default (props) => {
   const [currentNews, setCurrentNews] = useState('');
+  const [gNews, setgNews] = useGlobal('gSelectedNews');
   // const [currentTitle, setCurrentTitle] = useState([]);
-  const handleClickNews = () => {
-    // alert('You have clicked me');
-    return (
-      <div className="bg-blue-500 h-screen w-screen">
-
-      </div>
-    )
+  const handleClickNews = (url) => {
+    axios.post(config.server_url + config.api.getReadNews, { url: url }).then(res => {
+      console.log('Selected news:', url);
+      setgNews(res.data);
+      return <Redirect push to={config.routes.singlenews} />
+    }).catch(err => alert(err));
   }
   useEffect(() => {
     var arr = props.data.title.split(" - ");
@@ -43,41 +46,46 @@ export default (props) => {
   }, [props]);
   return (
     <Fragment>
-      {currentNews ?
-        <div class="max-w-sm w-full lg:max-w-full lg:flex mb-4" onClick={() => { handleClickNews() }}>
-          {currentNews.urlToImage ? <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-            style={{ backgroundImage: `url('${currentNews.urlToImage}')` }}
-            title={currentNews.shorttitle}> </div>
-            :
-            <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-              style={{ backgroundImage: `url('https://lousbarandgrill.com/wp-content/uploads/2018/08/news-1.jpg')` }}
+      <Link to={config.routes.singlenews} onClick={() => { handleClickNews(currentNews.url); }} exact>
+        {currentNews ?
+
+
+
+          <div class="max-w-sm w-full lg:max-w-full lg:flex mb-4" >
+            {currentNews.urlToImage ? <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+              style={{ backgroundImage: `url('${currentNews.urlToImage}')` }}
               title={currentNews.shorttitle}> </div>
-          }
-          {/* <div class="border-t border-r border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"/> */}
-          <div class="xl:w-screen lg:w-screen border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-            <div class="mb-8">
-              <p class="text-sm text-gray-600 flex items-center">
-                <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                  <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
-                </svg>
-                You will be directed to the original site
+              :
+              <div class="h-48 lg:h-auto lg:w-48 md:h-auto md:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l md:rounded-t-none md:rounded-l text-center overflow-hidden"
+                style={{ backgroundImage: `url('https://lousbarandgrill.com/wp-content/uploads/2018/08/news-1.jpg')` }}
+                title={currentNews.shorttitle}> </div>
+            }
+            {/* <div class="border-t border-r border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"/> */}
+            <div class="xl:w-screen lg:w-screen border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+              <div class="mb-8">
+                <p class="text-sm text-gray-600 flex items-center">
+                  <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
+                  </svg>
+                  You will be directed to the original site
             </p>
-              <div class="text-gray-900 font-bold text-xl mb-2">{currentNews.shorttitle}</div>
-              <p class="text-gray-700 text-base">{currentNews.description}</p>
-            </div>
-            <div class="flex items-center">
-              <div class="text-sm">
-                <p class="text-gray-900 leading-none">
-                  <a href={currentNews.url}>
-                    {currentNews.publisher}
-                  </a>
-                </p>
-                <p class="text-gray-600">{currentNews.publishtime.toLocaleString()} </p>
+                <div class="text-gray-900 font-bold text-xl mb-2">{currentNews.shorttitle}</div>
+                <p class="text-gray-700 text-base">{currentNews.description}</p>
+              </div>
+              <div class="flex items-center">
+                <div class="text-sm">
+                  <p class="text-gray-900 leading-none">
+                    <a href={currentNews.url}>
+                      {currentNews.publisher}
+                    </a>
+                  </p>
+                  <p class="text-gray-600">{currentNews.publishtime.toLocaleString()} </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        : null}
+          : null}
+      </Link>
     </Fragment>
   )
 }

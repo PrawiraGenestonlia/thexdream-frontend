@@ -11,6 +11,7 @@ export default () => {
   const [loadedArticles, setLoadedArticles] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+
   // window.onscroll = debounce(() => {
   //   if (isLoading || !hasMore) return;
   //   if (
@@ -61,9 +62,11 @@ export default () => {
         backgroundColor='white'
         startInvisible={true}
       > */}
+      {/* <a href={articles.url} ><NewsCard data={articles} /></a> */}
       {
         currentnews && currentnews.articles.map((articles, index) => {
-          if (index < loadedArticles) return <a href={articles.url} ><NewsCard data={articles} /></a>
+          if (index < loadedArticles)
+            return <NewsCard data={articles} />
           else return null;
         })
       }
@@ -77,7 +80,6 @@ export default () => {
       {!hasMore &&
         <div className="flex align-center">There is no more top news at the moment!</div>
       }
-      {/* </PullToRefresh> */}
-    </Fragment >
+    </Fragment>
   )
 }

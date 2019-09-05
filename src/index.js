@@ -17,6 +17,7 @@ setGlobal({
   gIsSidebarCollapse: false,
   gTestState: 1,
   gShowPromptModal: true,
+  gSelectedNews: ''
 });
 
 function configureHistory() {

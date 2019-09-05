@@ -59,6 +59,11 @@ export default (props) => {
                 Setting
               </span>
             </NavLink>
+            {/* <NavLink to={config.routes.singlenews} activeStyle={NavLinkStyle} exact>
+              <span onClick={() => { handleClickNav() }}>
+                Single News
+              </span>
+            </NavLink> */}
           </nav>
         </div>
       </div>

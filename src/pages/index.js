@@ -6,6 +6,7 @@ import TopNews from './Topnews.page';
 import About from './About.page';
 import Setting from './Setting.page';
 import NotFound from './Notfound.page';
+import SingleNews from './SingleNews.page';
 
 export {
   Test,
@@ -14,5 +15,6 @@ export {
   TopNews,
   About,
   Setting,
-  NotFound
+  NotFound,
+  SingleNews
 };
